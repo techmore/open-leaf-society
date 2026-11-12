@@ -33,7 +33,7 @@ Neighbors and members set the priority order each year at a public meetup.
 
 The ledger is a plain [CSV file]({{ '/ledger/community-dividend.csv' | relative_url }}) in the open repository, so anyone can download it, and every change has public history.
 
-| | |
+| Ledger | Status |
 |---|---|
 | Fund balance | **$0.00** (Phase 0, no member shops yet) |
 | Grants made | None yet |

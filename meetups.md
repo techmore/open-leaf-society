@@ -15,7 +15,7 @@ tldr:
 
 ## What happens
 
-| Time | |
+| Time | What |
 |---|---|
 | 6:30 | Welcome & coffee |
 | 6:45 | 15-minute briefing: where things stand |

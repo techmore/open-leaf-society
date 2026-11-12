@@ -21,12 +21,12 @@ The **Cannabaceae** family isn't just cannabis. It also includes:
 
 ## One plant, a thousand jobs
 
-| | |
+| Use | How |
 |---|---|
 | 🪢 **Rope & cloth** | Hemp fiber rigged sailing ships and clothed colonists. It's one of the strongest natural fibers. |
 | 🌾 **Food** | Hemp seeds are rich in protein and healthy fats. They're sold in grocery stores today. |
 | 🧱 **Building** | *Hempcrete*, made from the woody core of the stalk mixed with lime, insulates walls and locks plant carbon into the building. |
-| 💊 **Medicine** | The FDA approved a CBD medicine (Epidiolex) for rare forms of childhood epilepsy in 2018. Research on other uses continues. |
+| 💊 **Medicine** | In 2018 the FDA approved a CBD medicine (Epidiolex) for rare, severe forms of epilepsy. Research on other uses continues. |
 | 🔥 **Fuel** | The woody core can be pressed into pellets and is being tested as biomass fuel and animal bedding. |
 | 🌱 **Soil cleanup** | Studies, including trials near Chernobyl, suggest hemp roots can pull some heavy metals from contaminated soil. The evidence is promising but still thin. |
 
@@ -39,7 +39,7 @@ The **Cannabaceae** family isn't just cannabis. It also includes:
 - **1729:** Hempfield Township in Lancaster County was named for the hemp fields there. Lancaster and York counties, along the Susquehanna, were among colonial America's great hemp regions.
 - **1800s:** Steamships replaced sails, rope demand fell, and hemp farming moved west.
 - **1942:** The U.S. Department of Agriculture released *Hemp for Victory*, urging farmers to grow hemp for the war effort.
-- **2019 → today:** Pennsylvania re-opened permitted hemp farming. The state issued 170 growing permits for 2026.
+- **2017–2019:** Pennsylvania brought hemp farming back, first as research, then commercially. The state issued 170 growing permits for 2026.
 
 ## Hemp in space
 

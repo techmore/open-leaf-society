@@ -42,7 +42,7 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 > On December 11, federal law redefines hemp:
 > • THC is measured as *total* THC, including THCA
 > • Finished products are capped at 0.4 mg total THC per package
-> • Since Nov 12, lab-converted cannabinoids like HHC and THC-O are no longer hemp
+> • Since Nov 12, cannabinoids the plant can't make on its own (like THC-O) are no longer hemp
 >
 > For local shops, a large share of shelves changes overnight. For townships, that means the picture from last year no longer applies.
 >

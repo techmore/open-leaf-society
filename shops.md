@@ -15,7 +15,7 @@ Hemp and CBD **retailers, growers and processors** are the focus. Medical cannab
 
 ## What membership gives you
 
-| | |
+| What you get | What it means |
 |---|---|
 | **The Open Leaf Standard** | A written, versioned standard for how a well-run shop operates: lab certificates, batch traceability, ID checks, labeling, complaints and recalls. It's free to read and open to comment. |
 | **An independent audit** | A separate auditing body checks you against the standard and publishes a pass/fail summary. Your dues fund the auditing body, but it doesn't answer to members. |
@@ -30,7 +30,7 @@ Dues are not set yet. They're an open question in the [draft charter]({{ '/rfc/0
 <div class="callout" markdown="1">
 **This will hit most shops' shelves.** Under federal law (Public Law 119-37, as delayed by Public Law 119-103):
 
-- **From Nov 12, 2026:** cannabinoids the plant can't naturally produce (e.g. HHC, THC-O) are no longer hemp.
+- **From Nov 12, 2026:** cannabinoids the plant can't naturally produce (e.g. THC-O) are no longer hemp.
 - **From Dec 11, 2026:** hemp is measured by *total* THC including THCA, and finished products are capped at **0.4 mg total THC per container**. That likely rules out THCA flower, most delta-8/delta-9 edibles and drinks, and converted cannabinoids.
 - **Likely still hemp:** CBD isolate and broad-spectrum products, pet CBD and topicals that stay under the cap, each with a lab certificate (COA) for every batch.
 

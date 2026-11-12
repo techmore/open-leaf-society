@@ -24,7 +24,7 @@ tldr:
 |---|---|
 | Monthly totals by product category | Your name, phone, email or ID number |
 | Totals by area (township or 3-digit ZIP), only if a shop's customers opt in | Individual purchases |
-| Lab-testing and ID-check pass rates | Anything about a group smaller than 11 people |
+| Lab-testing and ID-check pass rates | Anything about a group of 1 to 10 people |
 
 The full rules are on the [data page]({{ '/data/' | relative_url }}).
 

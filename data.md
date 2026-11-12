@@ -5,7 +5,7 @@ eyebrow: Ground truth
 lede: Totals only, published openly, with privacy rules written into the software.
 tldr:
   - "Shops calculate totals in Rupert. Raw sales never leave the store."
-  - "Anything describing fewer than 11 people is hidden."
+  - "Anything describing 1 to 10 people is hidden."
   - "Monthly submissions, quarterly public reports, and open CSV/JSON downloads."
 ---
 
@@ -32,7 +32,7 @@ tldr:
 ## Privacy rules
 
 1. **No customer identifiers, ever.** No names, phone numbers, emails, ID numbers or loyalty IDs. The format rejects any extra fields.
-2. **Small groups are hidden.** Any number describing fewer than **11** people or transactions is withheld. Public-health agencies use the same kind of threshold.
+2. **Small groups are hidden.** Any count from **1 to 10** people or transactions is withheld, along with the dollar totals that go with it. Public-health agencies use the same kind of threshold.
 3. **Area data needs opt-in.** Area totals come only from customers who agree, and are never more precise than a township or 3-digit ZIP.
 4. **Shops can see their own submission** before it's sent.
 

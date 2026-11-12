@@ -6,15 +6,15 @@ eyebrow: "Draft · Comments open"
 lede: The founding proposal. Every section is open to comment and change.
 tldr:
   - "Status: Draft v0.1. Nothing here is final."
-  - "Comment by opening a GitHub issue titled 'RFC-0001: <section>', or speak at a meetup."
+  - "Comment by opening a GitHub issue titled with RFC-0001 and the section number, or speak at a meetup."
   - "Open questions are listed at the bottom. Those are where your input matters most."
 ---
 
-| | |
+| Field | Detail |
 |---|---|
 | **Status** | Draft v0.1 |
 | **Authors** | Derek Ubel (Herbal Healers), Sean Down (Rupert) |
-| **Area** | {{ site.home_area }} → Bucks County → Greater Philadelphia |
+| **Area** | Wrightstown Township → all of Bucks County → Greater Philadelphia |
 | **Comments** | [GitHub issues]({{ site.repo }}/issues) · [monthly meetups]({{ '/meetups/' | relative_url }}) |
 
 ## 1. Problem
@@ -76,7 +76,7 @@ Where existing consensus standards apply (for example ASTM Committee D37 on Cann
 
 ## 7. Data & reporting
 
-Shops calculate monthly totals locally, small groups (fewer than 11) are suppressed, and no customer identifiers are collected. Townships receive quarterly reports; everyone gets open datasets. Format: [OpenAPI draft]({{ '/api/openapi.yaml' | relative_url }}). Details: [Data]({{ '/data/' | relative_url }}).
+Shops calculate monthly totals locally, small groups (1 to 10 people) are suppressed, and no customer identifiers are collected. Townships receive quarterly reports; everyone gets open datasets. Format: [OpenAPI draft]({{ '/api/openapi.yaml' | relative_url }}). Details: [Data]({{ '/data/' | relative_url }}).
 
 ## 8. Community Dividend
 
@@ -111,4 +111,4 @@ Members contribute **1% of gross sales** to a fund held by the foundation. Prior
 
 ## 12. How to comment
 
-Open a [GitHub issue]({{ site.repo }}/issues) titled `RFC-0001: <section number>`, email [{{ site.contact_email }}](mailto:{{ site.contact_email }}), or bring it to the next [meetup]({{ '/meetups/' | relative_url }}).
+Open a [GitHub issue]({{ site.repo }}/issues) titled `RFC-0001: §6` (use your section number), email [{{ site.contact_email }}](mailto:{{ site.contact_email }}), or bring it to the next [meetup]({{ '/meetups/' | relative_url }}).

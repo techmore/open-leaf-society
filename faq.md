@@ -9,7 +9,7 @@ lede: Short answers to the questions we hear most.
 Yes. Hemp and CBD are legal under federal and Pennsylvania law within THC limits, and those limits tighten on **December 11, 2026**. Open Leaf collects data, writes standards and runs a community fund. We don't sell anything. We follow current law and advocate openly for better law.
 
 ### Is this about marijuana?
-Mostly not. "Cannabaceae" is the plant family that includes hemp (and hops). We focus on hemp and CBD retailers, growers and processors. Medical cannabis operators are welcome, but the state already oversees them.
+It's about the whole cannabis plant as a resource: medicine, fiber, food and raw material. Hemp and marijuana are the same species; the legal line is THC content. Today, the shops we work with sell hemp and CBD, which are legal. Medical marijuana is run by the state program. Adult-use marijuana isn't legal in Pennsylvania, and we follow the law while pushing openly for better law. More on [the plant]({{ '/plant/' | relative_url }}).
 
 ### Does the township have to pay for or pass anything?
 No. Reports are free. Phase 0 is only conversations.

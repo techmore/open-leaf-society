@@ -24,9 +24,11 @@ info:
     1. Shops aggregate locally. Raw transactions never leave the shop.
     2. No customer identifiers. Schemas set `additionalProperties: false`, so
        unexpected fields are rejected (`400 invalid_request`).
-    3. Any count describing fewer than 11 people or transactions MUST be sent
-       as `null` with `suppressed: true`. The server re-checks and rejects
-       unsuppressed small cells (`422 small_cell`).
+    3. Any count from 1 to 10 people or transactions MUST be sent as `null`
+       with `suppressed: true` (zero is allowed; it identifies no one). When a
+       sales category's transactions are suppressed, its `units`,
+       `gross_cents` and `tax_cents` MUST also be `null`. The server re-checks
+       and rejects unsuppressed small cells (`422 small_cell`).
     4. Area totals come only from customers who opted in, at township or ZIP3
        precision.
 
@@ -249,12 +251,16 @@ components:
             message: { type: string }
 
     SuppressibleCount:
-      description: "A count. If fewer than 11, send value null with suppressed true."
+      description: "A count. Zero or 11+ is sent as-is. 1 to 10 is sent as value null with suppressed true."
       type: object
       additionalProperties: false
       required: [value, suppressed]
       properties:
-        value: { type: [integer, 'null'], minimum: 11 }
+        value:
+          anyOf:
+            - { type: 'null' }
+            - { type: integer, const: 0 }
+            - { type: integer, minimum: 11 }
         suppressed: { type: boolean }
 
     ProductCategory:
@@ -291,9 +297,9 @@ components:
             required: [category, units, gross_cents, tax_cents, transactions]
             properties:
               category: { $ref: '#/components/schemas/ProductCategory' }
-              units: { type: integer, minimum: 0 }
-              gross_cents: { type: integer, minimum: 0 }
-              tax_cents: { type: integer, minimum: 0 }
+              units: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
+              gross_cents: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
+              tax_cents: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
               transactions: { $ref: '#/components/schemas/SuppressibleCount' }
         compliance:
           type: object
