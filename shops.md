@@ -2,28 +2,35 @@
 layout: default
 title: For shops, growers & processors
 eyebrow: Members
-lede: One open, reproducible standard to build your compliance on, checked by an independent auditor, recorded in open-source software.
+lede: One open, reproducible standard to build your compliance on, designed to be checked by an independent auditor and recorded in open-source software.
 tldr:
-  - "An open quality standard modeled on ISO 9001. Any trained auditor running the same checks gets the same result."
-  - "Independent audits you can show townships, landlords, banks, payment processors and insurers."
+  - "An open quality standard modeled on ISO 9001, written so different auditors checking the same evidence reach the same result."
+  - "Independent audits (from Phase 2) you can show townships, landlords, banks, payment processors and insurers."
   - "Rupert, our open-source POS and batch-records system, keeps your records at the shop. Only totals ever leave."
 ---
 
 ## Who it's for
 
-Hemp and CBD **retailers, growers and processors** are the focus. Medical cannabis operators are welcome, but the state program already oversees them. We're building for the part of the market nobody is measuring.
+Hemp and CBD **retailers, growers and processors** are the focus. Medical cannabis operators are welcome too, but the state program already oversees them. We're building for the part of the market nobody is measuring.
 
 ## What membership gives you
 
 | What you get | What it means |
 |---|---|
 | **The Open Leaf Standard** | A written, versioned standard for how a well-run shop operates: lab certificates, batch traceability, ID checks, labeling, complaints and recalls. It's free to read and open to comment. |
-| **An independent audit** | A separate auditing body checks you against the standard and publishes a pass/fail summary. Your dues fund the auditing body, but it doesn't answer to members. |
-| **Reproducible proof** | The same checks, the same evidence, the same result, every time. That's what townships, landlords, banks and insurers need to see before they'll say yes. |
-| **Rupert** | [Open-source]({{ site.rupert_repo }}) POS, inventory, lab-certificate and compliance records. Runs on payment hardware that has already been approved. |
+| **An independent audit** | A separate auditing body will check you against the standard and publish a pass/fail summary. Dues will fund it, but it won't answer to members. Planned for Phase 2. |
+| **Reproducible proof** | Written so the same evidence leads to the same result, whoever checks it. That's what townships, landlords, banks and insurers need to see before they'll say yes. |
+| **Rupert** | [Open-source]({{ site.rupert_repo }}) POS, inventory, lab-certificate and compliance records. Its point-of-sale has passed payment-processor approval. It won't get you a processor, but it can show one your exact approved catalog. |
 | **A seat at the table** | A member voice on the standard, the data rules, and how the 1% Community Dividend is spent. |
+| **Your commitment** | Dues (tiered by size, amounts not set yet) plus **1% of sales** into the [Community Dividend]({{ '/fund/' | relative_url }}). Whether that's gross or net of tax is still open. |
 
 Dues are not set yet. They're an open question in the [draft charter]({{ '/rfc/0001/' | relative_url }}). The current proposal is tiers by shop size, so a single-location shop isn't paying what a multi-site processor pays.
+
+**Your numbers stay yours.** Open Leaf never publishes a single shop's sales. Reports and the fund ledger only show totals combined across at least three shops.
+
+### Do I have to use Rupert?
+
+No. The data format is open, so any POS can implement it, and during the pilot we'll accept a simple spreadsheet. Rupert is open source and free to self-host; hosted support pricing isn't set yet.
 
 ## The federal hemp change
 

@@ -6,7 +6,7 @@ lede: Rope, food, medicine, walls, and maybe winter heat. One of the most useful
 tldr:
   - "Cannabis is one plant with many jobs: fiber, seed, building material and medicine."
   - "Pennsylvania was once America's hemp country. A township was named for it in 1729."
-  - "Grow-science workshops at our meetups cover the whole family, starting with what you can legally grow at home."
+  - "Grow-science workshops at our meetups use legal plants in the family, like hops and native hackberry trees."
 ---
 
 ## A bigger family than you think
@@ -39,7 +39,7 @@ The **Cannabaceae** family isn't just cannabis. It also includes:
 - **1729:** Hempfield Township in Lancaster County was named for the hemp fields there. Lancaster and York counties, along the Susquehanna, were among colonial America's great hemp regions.
 - **1800s:** Steamships replaced sails, rope demand fell, and hemp farming moved west.
 - **1942:** The U.S. Department of Agriculture released *Hemp for Victory*, urging farmers to grow hemp for the war effort.
-- **2017–2019:** Pennsylvania brought hemp farming back, first as research, then commercially. The state issued 170 growing permits for 2026.
+- **2017–2019:** Pennsylvania brought hemp farming back, first as research, then commercially. The state issued [170 hemp growing permits](https://www.pa.gov/en/agencies/pda/plants-land-water/hemp.html) for 2026.
 
 ## Hemp in space
 
@@ -55,7 +55,7 @@ In March 2020, hundreds of **hemp tissue cultures** rode a SpaceX cargo flight t
 
 ## Grow science for homeowners
 
-Good growing is the same science for every plant: soil, light, water, airflow and patience. Our meetups include short, practical workshops on all of it, starting with what you can legally grow today.
+Good growing is the same science for every plant: soil, light, water, airflow and patience. Our meetups include short, practical workshops on all of it, using plants you can legally grow today. We don't teach growing cannabis, or hemp without a permit.
 
 | Plant | Can I grow it at home in PA? |
 |---|---|

@@ -57,17 +57,19 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 
 ## Week 3: The 1% idea
 
+> ⚠️ **Hold until counsel confirms** whether Pennsylvania's charitable-solicitation rules (commercial co-venturer registration) apply to advertising "1% of sales to a fund."
+
 **Graphic text:** "1% of every member sale → batteries for seniors' homes, support for fire & EMS."
 
 **Caption:**
-> When the power goes out in January, the residents most at risk are older neighbors whose heat, oxygen concentrators and medication fridges depend on electricity.
+> When the power goes out in January, the residents most at risk are older neighbors whose heat and medical equipment depend on electricity.
 >
 > Open Leaf's proposal: member shops set aside 1% of sales for a Community Dividend. It goes directly to:
 > 🔋 Battery backup for seniors' homes
 > 🚒 Equipment and training for local fire & EMS
 > ⚡ Backup power at shared community sites
 >
-> Free to apply. Need-based. Every dollar on a public ledger. Help us set the priorities at our first meetup.
+> Starting small, growing with every member shop. Free to apply. Need-based. Every dollar on a public ledger. Help us set the priorities at our first meetup.
 
 **Short:**
 > What if 1% of every local hemp sale kept a senior's heat on during an outage? Our Community Dividend proposal, with a public ledger → [link]

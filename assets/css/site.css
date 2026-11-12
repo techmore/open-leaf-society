@@ -80,6 +80,8 @@ h3 { font-size: 1.2rem; margin: 1.6em 0 .4em; }
 .prose ul, .prose ol { padding-left: 1.3em; }
 .prose li { margin: .3em 0; }
 
+.faq h2 { font-size: 1.25rem; margin: 1.8em 0 .4em; }
+
 .tldr { max-width: 44rem; background: var(--tint); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 16px 20px; margin: 0 0 32px; }
 .tldr-label { margin: 0 0 6px; font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); }
 .tldr ul { margin: 0; padding-left: 1.2em; }
@@ -109,7 +111,7 @@ pre code { border: 0; padding: 0; }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; }
-.card h3 { margin: 4px 0 8px; }
+.card h2, .card h3 { font-size: 1.2rem; margin: 4px 0 8px; }
 .card p { margin: 0 0 12px; color: var(--ink-soft); }
 .card ul { margin: 0 0 16px; padding-left: 1.2em; }
 .card .more { margin-top: auto; font-weight: 600; }

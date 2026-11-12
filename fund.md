@@ -19,6 +19,12 @@ tldr:
 
 Neighbors and members set the priority order each year at a public meetup.
 
+## What to expect
+
+- **Small at first.** With a handful of pilot shops, the fund may cover only a few grants a year. A home battery system can cost $10,000 or more installed.
+- **Not a lifeline.** A battery helps during outages. It doesn't replace an emergency plan or your utility's protections for customers with medical equipment.
+- **Done properly.** Installs use licensed electricians, with the township's permits and inspections.
+
 ## How recipients are chosen
 
 1. **Eligibility first.** Need-based criteria are published in advance (for example: age, income, medical equipment at home).
@@ -31,10 +37,10 @@ Neighbors and members set the priority order each year at a public meetup.
 
 ## Public ledger
 
-The ledger is a plain [CSV file]({{ '/ledger/community-dividend.csv' | relative_url }}) in the open repository, so anyone can download it, and every change has public history.
+The ledger is a plain [CSV file]({{ '/ledger/community-dividend.csv' | relative_url }}) in the open repository, so anyone can download it, and every change has public history. Contributions are posted as one combined monthly total, never shop by shop, so no shop's sales can be worked out from the ledger.
 
 | Ledger | Status |
 |---|---|
 | Fund balance | **$0.00** (Phase 0, no member shops yet) |
 | Grants made | None yet |
-| Held by | The Open Leaf foundation (planned 501(c)(3), in formation) |
+| Held by | The Open Leaf foundation (planned 501(c)(3), in formation), in a separate, restricted account used only for grants |

@@ -15,7 +15,7 @@ tldr:
 - **Open by default.** The standard, the software, the data and the ledger are all public.
 - **Privacy first.** Totals, not people.
 - **Neighbors first.** Benefits should land where people live.
-- **Safety through transparency.** A visible, tested local market is safer than enforcement that sends demand elsewhere.
+- **Safety through transparency.** A visible, tested local market is easier to oversee than one pushed out of sight.
 
 ## Founders
 
@@ -63,12 +63,19 @@ Independent members hold the majority, and the chair is independent, so the peop
 | **Grant writer** | Matching funds for the Community Dividend | Phase 2 |
 | **Senior advocate** | Connects the fund to the residents who need it most | Phase 2 |
 
+## Conflicts of interest
+
+- **Founders and member shops never see another shop's monthly figures.** Only the data steward does.
+- **{{ site.partner_name }} steps out** of any decision about a competing shop.
+- **Meetup teaching slots rotate** among member shops and independent experts.
+- **Shop owners never audit**, or vote on audit results for, any shop.
+
 ## Structure
 
 We're forming as a nonprofit. The structure we're considering, subject to legal advice:
 
-- A **501(c)(3) foundation** for education, meetups, open data and the Community Dividend.
-- A **501(c)(6) member association** for member shops, dues, the standard and policy advocacy.
+- A **501(c)(3) foundation** for education, meetups, open data, the open standard and the Community Dividend.
+- A **501(c)(6) member association** for member shops, dues and any policy advocacy.
 - An **independent auditing body**, funded by dues but governed separately.
 
 Open Leaf is **not yet incorporated or tax-exempt**. This will be updated as each step is completed.

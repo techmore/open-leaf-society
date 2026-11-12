@@ -20,7 +20,9 @@ tldr:
 | Incidents & complaints | Reported problems and how they were resolved |
 | Community Dividend | Dollars from the 1% fund spent inside your township |
 
-All figures are totals. No customer names, IDs or individual purchases are ever included. See [our data rules]({{ '/data/' | relative_url }}).
+All figures are totals. No customer names, IDs or individual purchases are ever included, and no report shows a single shop's sales: figures combine at least three member shops, and a township with fewer rolls up to the county. See [our data rules]({{ '/data/' | relative_url }}).
+
+**What the reports cover:** participating member shops only, not every store, gas station or online seller. Figures are self-reported until independent audits begin in Phase 2.
 
 ## What we're not asking for
 
@@ -34,14 +36,14 @@ All figures are totals. No customer names, IDs or individual purchases are ever 
 Pennsylvania townships can only levy taxes the state authorizes, and there is **no local cannabis or hemp sales tax today**. Here's what's possible now:
 
 - **Plan with real data.** Zoning, policing and budget decisions based on actual local sales, not estimates.
-- **Voluntary community agreements.** Member shops can commit to local benefits in writing.
+- **Voluntary community agreements.** Member shops can commit to local benefits in writing. These are never tied to any permit, zoning or land-use decision, and counsel will review the model agreement first.
 - **The 1% Community Dividend.** Money reaches residents directly, with no new tax and no township administration.
-- **Be ready.** When Harrisburg acts on hemp or adult-use cannabis, townships with clean data will already have it.
+- **Be ready.** If Harrisburg acts on hemp or adult-use cannabis, townships with clean data will already have it.
 </div>
 
-## Why enforcement alone doesn't work
+## Why measured data helps
 
-Turning away licensed, tested, tax-paying shops doesn't stop demand. It sends buyers to sources with no lab testing, no ID checks and no accountability, including organized illicit supply chains. A transparent local market is safer for residents and easier to oversee.
+When legal, tested products are hard to find locally, demand doesn't disappear. Some buyers turn to untested online sellers or illicit sources, with no lab testing and no ID checks. Local data shows what's actually happening, so decisions rest on facts instead of guesses.
 
 ## Next step
 

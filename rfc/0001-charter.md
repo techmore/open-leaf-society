@@ -44,14 +44,14 @@ Townships in Bucks County make zoning, policing and budget decisions about hemp 
 
 ## 4. Governance
 
-- **Two entities, subject to counsel:** a 501(c)(3) foundation (education, open data, meetups, Community Dividend) and a 501(c)(6) member association (dues, standard, advocacy).
+- **Two entities, subject to counsel:** a 501(c)(3) foundation (education, open data, the open standard, meetups, Community Dividend) and a 501(c)(6) member association (dues, member services, any advocacy).
 - **Board:** 7 seats: 2 founders, 5 independent (chair, treasurer, municipal, health, public safety). See [About]({{ '/about/' | relative_url }}).
-- **Standard changes:** proposed as numbered RFCs, open for at least 30 days of public comment, approved by the board, and versioned.
-- **Conflicts:** Shop owners may not audit, or vote on audit outcomes for, any shop.
+- **Standard changes:** proposed as numbered RFCs, open for at least 30 days of public comment, approved by the foundation board (independent majority), and versioned.
+- **Conflicts:** Shop owners may not audit, or vote on audit outcomes for, any shop. Founders and member shops never see another shop's submission; only the data steward does. Partners step out of decisions involving competitors. Meetup teaching slots rotate.
 
 ## 5. Membership & dues
 
-- Open to any hemp/CBD retailer, grower or processor in Pennsylvania that agrees to the standard.
+- Open to any Pennsylvania hemp/CBD retailer, grower or processor, and to medical cannabis operators, that agrees to the standard.
 - Dues are **tiered by size** (proposal: by annual gross sales band). Amounts are an open question.
 - Dues fund the auditing body, data operations and meetups. The 1% Community Dividend is separate and never funds operations.
 
@@ -76,11 +76,11 @@ Where existing consensus standards apply (for example ASTM Committee D37 on Cann
 
 ## 7. Data & reporting
 
-Shops calculate monthly totals locally, small groups (1 to 10 people) are suppressed, and no customer identifiers are collected. Townships receive quarterly reports; everyone gets open datasets. Format: [OpenAPI draft]({{ '/api/openapi.yaml' | relative_url }}). Details: [Data]({{ '/data/' | relative_url }}).
+Shops calculate monthly totals locally, small groups (1 to 10 people) are suppressed, no customer identifiers are collected, and no report or ledger line shows a single shop (figures combine at least three shops). Reports cover member shops only and are self-reported until audits begin. Townships receive quarterly reports; everyone gets open datasets. Format: [OpenAPI draft]({{ '/api/openapi.yaml' | relative_url }}). Details: [Data]({{ '/data/' | relative_url }}).
 
 ## 8. Community Dividend
 
-Members contribute **1% of gross sales** to a fund held by the foundation. Priorities: winter resilience (battery backup) for seniors, fire & EMS support, and local backup power. Need-based eligibility, free to apply, public verifiable draw only to order eligible applicants, and a public ledger. Details: [Fund]({{ '/fund/' | relative_url }}).
+Members contribute **1% of sales** (gross or net of tax: open question 3) to a restricted fund held by the foundation and used only for grants. Priorities: winter resilience (battery backup) for seniors, fire & EMS support, and local backup power. Need-based eligibility, free to apply, public verifiable draw only to order eligible applicants, and a public ledger. Details: [Fund]({{ '/fund/' | relative_url }}).
 
 ## 9. Safe access & travel
 
@@ -96,7 +96,7 @@ Members contribute **1% of gross sales** to a fund held by the foundation. Prior
 | **0: Framework & listening** (now) | Site, charter, data spec; briefings with shops and supervisors; monthly meetups | Charter v1.0 adopted after public comment |
 | **1: Pilot** | 3–5 member shops in and around {{ site.home_area }}; first monthly submissions | First quarterly township report published |
 | **2: Audit & fund** | Independent auditing body; first certifications; first Community Dividend grants | First audited members and first grant on the ledger |
-| **3: Region** | Expand across Bucks County, then Greater Philadelphia | Reports for multiple townships |
+| **3: Region** | Expand across Bucks County, then the Pennsylvania side of Greater Philadelphia | Reports for multiple townships |
 
 ## 11. Open questions
 
@@ -108,6 +108,7 @@ Members contribute **1% of gross sales** to a fund held by the foundation. Prior
 6. How should the standard handle products that become non-compliant on December 11?
 7. Which ride-share or delivery partners are worth approaching?
 8. Could locally grown hemp be pressed into heating pellets for the Community Dividend's winter program?
+9. Who should serve as data steward, independent of founders and member shops?
 
 ## 12. How to comment
 

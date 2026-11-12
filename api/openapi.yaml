@@ -31,6 +31,12 @@ info:
        and rejects unsuppressed small cells (`422 small_cell`).
     4. Area totals come only from customers who opted in, at township or ZIP3
        precision.
+    5. Secondary suppression: a suppressed value must not be recoverable by
+       subtracting from other totals (including `dividend.accrued_cents`).
+    6. Shops are protected too: no public output (report, dataset, ledger)
+       shows a single shop. Public figures combine at least 3 shops; a
+       township with fewer rolls up to the county.
+    7. Raw submissions are visible only to the data steward.
 
     Rupert source mapping (informative):
 
@@ -38,7 +44,7 @@ info:
     | --- | --- |
     | sales[] | pos_event_sales (lines_json, subtotal_cents, tax_cents) grouped by compliance_categories |
     | compliance.id_checks / id_check_overrides | pos_event_sales.id_checked, override_by_id |
-    | compliance.units_with_current_coa | certificates_of_analysis (status, expires_on) via compliance_catalog_items |
+    | compliance.units_with_current_coa / units_with_passing_coa | certificates_of_analysis (status, expires_on) via compliance_catalog_items |
     | compliance.catalog_items_over_thc_cap | compliance_catalog_items.thc_mg_per_container > 0.4 |
     | compliance.blocked_sale_attempts | compliance_events |
   license:
@@ -264,6 +270,10 @@ components:
         suppressed: { type: boolean }
 
     ProductCategory:
+      description: |
+        For periods from 2026-12 on, thca_flower, thc_edible and thc_beverage
+        should be zero unless every product meets the federal hemp definition
+        (total THC, 0.4 mg per container). The server flags nonzero values for review.
       type: string
       enum: [cbd_ingestible, cbd_topical, cbd_flower, hemp_food, thc_edible, thc_beverage,
              thca_flower, concentrate, functional_mushroom, pet, accessory, other]
@@ -304,14 +314,19 @@ components:
         compliance:
           type: object
           additionalProperties: false
-          required: [age_restricted_sales, id_checks, id_check_overrides, units_sold, units_with_current_coa,
-                     catalog_items_active, catalog_items_over_thc_cap, blocked_sale_attempts]
+          required: [age_restricted_sales, id_checks, id_checks_failed, id_check_overrides, units_sold,
+                     units_with_current_coa, units_with_passing_coa, catalog_items_active,
+                     catalog_items_over_thc_cap, blocked_sale_attempts]
           properties:
-            age_restricted_sales: { type: integer, minimum: 0 }
-            id_checks: { type: integer, minimum: 0 }
-            id_check_overrides: { type: integer, minimum: 0, description: 'Overrides logged with a reason.' }
+            age_restricted_sales: { $ref: '#/components/schemas/SuppressibleCount' }
+            id_checks: { $ref: '#/components/schemas/SuppressibleCount' }
+            id_checks_failed: { $ref: '#/components/schemas/SuppressibleCount' }
+            id_check_overrides:
+              description: Overrides logged with a reason.
+              $ref: '#/components/schemas/SuppressibleCount'
             units_sold: { type: integer, minimum: 0 }
             units_with_current_coa: { type: integer, minimum: 0 }
+            units_with_passing_coa: { type: integer, minimum: 0 }
             catalog_items_active: { type: integer, minimum: 0 }
             catalog_items_over_thc_cap:
               type: integer
@@ -345,16 +360,17 @@ components:
           type: object
           additionalProperties: false
           properties:
-            complaints_opened: { type: integer, minimum: 0 }
-            complaints_closed: { type: integer, minimum: 0 }
-            recalls: { type: integer, minimum: 0 }
-            adverse_events_reported: { type: integer, minimum: 0 }
+            complaints_opened: { $ref: '#/components/schemas/SuppressibleCount' }
+            complaints_closed: { $ref: '#/components/schemas/SuppressibleCount' }
+            complaints_with_corrective_action: { $ref: '#/components/schemas/SuppressibleCount' }
+            recalls: { type: integer, minimum: 0, description: 'Product recalls (about products, not people).' }
+            adverse_events_reported: { $ref: '#/components/schemas/SuppressibleCount' }
         dividend:
           type: object
           additionalProperties: false
           required: [accrued_cents, paid_cents]
           properties:
-            accrued_cents: { type: integer, minimum: 0, description: '1% of gross sales for the period.' }
+            accrued_cents: { type: integer, minimum: 0, description: '1% of sales for the period (gross vs. net of tax: RFC-0001 open question 3). Never published per shop.' }
             paid_cents: { type: integer, minimum: 0 }
 
     SubmissionReceiptEnvelope:
@@ -396,9 +412,9 @@ components:
       type: object
       properties:
         date: { type: string, format: date }
-        type: { type: string, enum: [contribution, grant, fee, adjustment] }
+        type: { type: string, enum: [contribution, grant, bank_fee, adjustment], description: 'bank_fee is third-party banking cost only; the fund never pays operations.' }
         amount_cents: { type: integer }
-        counterparty: { type: string, description: 'Shop name for contributions; "Household grant #n" for residents (never a name).' }
+        counterparty: { type: string, description: '"Member contributions (combined)" for contributions, never a single shop; "Household grant #n" for residents (never a name).' }
         township: { type: [string, 'null'] }
         memo: { type: string }
         evidence_url: { type: [string, 'null'], format: uri }
