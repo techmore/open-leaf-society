@@ -19,7 +19,7 @@ tldr:
 |---|---|
 | 6:30 | Welcome & coffee |
 | 6:45 | 15-minute briefing: where things stand |
-| 7:00 | Short teaching segment from {{ site.partner_name }}: reading a lab certificate, what changes in December, and similar topics |
+| 7:00 | Short teaching segment from {{ site.partner_name }}, alternating between product literacy (reading a lab certificate, what changes in December) and [grow science]({{ '/plant/' | relative_url }}) (soil, light, hops on a trellis) |
 | 7:20 | Open floor: questions, concerns, ideas |
 | 7:50 | What we heard, and what happens next |
 

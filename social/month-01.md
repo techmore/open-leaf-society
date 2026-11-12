@@ -99,6 +99,16 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 
 ## Ideas for later months
 
+**"Meet the plant" series:** curiosity posts for newcomers, linking to /plant/
+- "Pennsylvania named a township after hemp in 1729." (Hempfield, Lancaster County)
+- "Hemp went to the space station in 2020." (Front Range Biosciences / SpaceCells on SpaceX CRS-20; not a NASA experiment)
+- "Your beer and this plant are cousins." (Hops are Cannabaceae)
+- "That tree on your street might be family too." (Common hackberry)
+- "Hemp for Victory" (the USDA's 1942 film)
+- "Walls made of plants" (hempcrete)
+- Myth vs. fact: "Does cannabis clean indoor air?" (No evidence; NASA's 1989 study tested houseplants)
+- "Grow hops on your fence this spring" (grow-science workshop teaser)
+
 - **Myth vs. fact** series (e.g. "Does a legal local shop increase crime?", with sources)
 - **"Read a COA in 60 seconds"** carousel
 - **Township spotlight**: after a supervisor briefing, with their permission

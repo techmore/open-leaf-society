@@ -27,6 +27,7 @@ Townships in Bucks County make zoning, policing and budget decisions about hemp 
 2. Give shops an **open, reproducible operating standard** and independent proof they meet it.
 3. Give residents **clear prices, tested products, privacy**, and a direct share of local benefit.
 4. Publish **anonymized, open data** on sales patterns, compliance and community impact.
+5. **Teach the plant:** its history, raw-material uses (fiber, food, building, fuel) and practical grow science for homeowners, within the law.
 
 **Non-goals:** Open Leaf does not sell products, lobby for any single company, replace state regulators, or collect customer identities.
 
@@ -106,6 +107,7 @@ Members contribute **1% of gross sales** to a fund held by the foundation. Prior
 5. Should the area data use townships, 3-digit ZIPs, or both?
 6. How should the standard handle products that become non-compliant on December 11?
 7. Which ride-share or delivery partners are worth approaching?
+8. Could locally grown hemp be pressed into heating pellets for the Community Dividend's winter program?
 
 ## 12. How to comment
 
