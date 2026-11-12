@@ -1,0 +1,398 @@
+openapi: 3.1.0
+info:
+  title: Open Leaf Reporting API
+  version: 0.1.0-draft
+  summary: Monthly aggregate submissions from member shops, and public quarterly reports.
+  description: |
+    DRAFT. Comment via RFC-0001. Nothing here is final.
+
+    Conventions follow Rupert's API standards (docs/api-standards.md in
+    https://github.com/techmore/rupert) so Rupert, the reference implementation,
+    can adopt this with minimal change, and any other POS can implement it:
+
+    - Version in the path (`/api/v1`) and in `meta.api_version`.
+    - JSON fields are `snake_case`; times are ISO 8601; money is integer cents;
+      `null` means unknown, never zero.
+    - Success: `{ "data": ..., "meta": { "api_version": "v1", ... } }`.
+      Errors: `{ "error": { "code": "...", "message": "..." } }`.
+    - Lists take `page` (1-1000) and `per_page` (1-100, default 50).
+    - Write tokens are bearer tokens with scopes; the token, not the request,
+      decides which shop is submitting.
+
+    Privacy rules (enforced by schema and by the server):
+
+    1. Shops aggregate locally. Raw transactions never leave the shop.
+    2. No customer identifiers. Schemas set `additionalProperties: false`, so
+       unexpected fields are rejected (`400 invalid_request`).
+    3. Any count describing fewer than 11 people or transactions MUST be sent
+       as `null` with `suppressed: true`. The server re-checks and rejects
+       unsuppressed small cells (`422 small_cell`).
+    4. Area totals come only from customers who opted in, at township or ZIP3
+       precision.
+
+    Rupert source mapping (informative):
+
+    | Submission field | Rupert source |
+    | --- | --- |
+    | sales[] | pos_event_sales (lines_json, subtotal_cents, tax_cents) grouped by compliance_categories |
+    | compliance.id_checks / id_check_overrides | pos_event_sales.id_checked, override_by_id |
+    | compliance.units_with_current_coa | certificates_of_analysis (status, expires_on) via compliance_catalog_items |
+    | compliance.catalog_items_over_thc_cap | compliance_catalog_items.thc_mg_per_container > 0.4 |
+    | compliance.blocked_sale_attempts | compliance_events |
+  license:
+    name: CC BY 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+  - url: https://api.openleafsociety.org/api/v1
+    description: Placeholder. Not live.
+security:
+  - bearer: []
+tags:
+  - name: Submissions
+    description: Monthly totals from member shops (requires a member token).
+  - name: Public
+    description: Open, unauthenticated reads.
+
+paths:
+  /shops/{shop_id}/submissions/{period}:
+    parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/Period'
+    put:
+      tags: [Submissions]
+      summary: Submit or replace one month's totals
+      description: |
+        Idempotent: the same shop and period always identify the same submission.
+        Re-sending replaces it until the period is locked (15 days after the
+        quarter closes). After lock, corrections need a new `revision` with a `revision_reason`.
+      security:
+        - bearer: [submissions:write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/MonthlySubmission' }
+      responses:
+        '200':
+          description: Accepted (replaced an existing submission)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SubmissionReceiptEnvelope' }
+        '201':
+          description: Accepted (new submission)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SubmissionReceiptEnvelope' }
+        '400': { $ref: '#/components/responses/Error' }
+        '401': { $ref: '#/components/responses/Error' }
+        '403': { $ref: '#/components/responses/Error' }
+        '409':
+          description: Period is locked; send a revision
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '422':
+          description: Failed validation (e.g. `small_cell`, `period_in_future`)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '429': { $ref: '#/components/responses/Error' }
+    get:
+      tags: [Submissions]
+      summary: Read back your own submission
+      security:
+        - bearer: [submissions:read]
+      responses:
+        '200':
+          description: The stored submission
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: { $ref: '#/components/schemas/MonthlySubmission' }
+                  meta: { $ref: '#/components/schemas/Meta' }
+        '404': { $ref: '#/components/responses/Error' }
+
+  /shops:
+    get:
+      tags: [Public]
+      summary: List member shops and their audit status
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: township_fips
+          in: query
+          schema: { type: string, pattern: '^[0-9]{10}$' }
+      responses:
+        '200':
+          description: Member shops
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Shop' }
+                  meta: { $ref: '#/components/schemas/Meta' }
+
+  /reports:
+    get:
+      tags: [Public]
+      summary: List published quarterly township reports
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: township_fips
+          in: query
+          schema: { type: string, pattern: '^[0-9]{10}$' }
+        - name: quarter
+          in: query
+          schema: { type: string, pattern: '^[0-9]{4}-Q[1-4]$', examples: ['2027-Q1'] }
+      responses:
+        '200':
+          description: Reports
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/QuarterlyReport' }
+                  meta: { $ref: '#/components/schemas/Meta' }
+
+  /fund/ledger:
+    get:
+      tags: [Public]
+      summary: Community Dividend ledger
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: Ledger entries, newest first
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/LedgerEntry' }
+                  meta: { $ref: '#/components/schemas/Meta' }
+
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: |
+        Member token issued by Open Leaf to one shop. Scopes:
+        `submissions:write`, `submissions:read`. Same digest-only storage and
+        revocation model as Rupert's `rupert_` tokens.
+
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema: { type: string, pattern: '^shop_[a-z0-9]{12}$' }
+    Period:
+      name: period
+      in: path
+      required: true
+      description: Calendar month in the shop's time zone.
+      schema: { type: string, pattern: '^[0-9]{4}-(0[1-9]|1[0-2])$', examples: ['2027-01'] }
+    Page:
+      name: page
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 1000, default: 1 }
+    PerPage:
+      name: per_page
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 100, default: 50 }
+
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+  schemas:
+    Meta:
+      type: object
+      properties:
+        api_version: { type: string, const: v1 }
+        page: { type: integer }
+        per_page: { type: integer }
+        has_more: { type: boolean }
+        next_page: { type: [integer, 'null'] }
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              enum: [invalid_request, invalid_pagination, unauthorized, forbidden, not_found,
+                     period_locked, period_in_future, small_cell, rate_limited]
+            message: { type: string }
+
+    SuppressibleCount:
+      description: "A count. If fewer than 11, send value null with suppressed true."
+      type: object
+      additionalProperties: false
+      required: [value, suppressed]
+      properties:
+        value: { type: [integer, 'null'], minimum: 11 }
+        suppressed: { type: boolean }
+
+    ProductCategory:
+      type: string
+      enum: [cbd_ingestible, cbd_topical, cbd_flower, hemp_food, thc_edible, thc_beverage,
+             thca_flower, concentrate, functional_mushroom, pet, accessory, other]
+
+    MonthlySubmission:
+      type: object
+      additionalProperties: false
+      required: [period, standard_version, generator, sales, compliance, fulfillment, dividend]
+      properties:
+        period: { type: string, pattern: '^[0-9]{4}-(0[1-9]|1[0-2])$' }
+        revision: { type: integer, minimum: 0, default: 0 }
+        revision_reason: { type: [string, 'null'], maxLength: 500 }
+        standard_version: { type: string, examples: ['0.1'] }
+        generator:
+          description: Software that produced this submission.
+          type: object
+          additionalProperties: false
+          required: [name, version]
+          properties:
+            name: { type: string, examples: [rupert] }
+            version: { type: string }
+        location_township_fips:
+          description: 10-digit county subdivision FIPS of the shop location.
+          type: string
+          pattern: '^[0-9]{10}$'
+        sales:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [category, units, gross_cents, tax_cents, transactions]
+            properties:
+              category: { $ref: '#/components/schemas/ProductCategory' }
+              units: { type: integer, minimum: 0 }
+              gross_cents: { type: integer, minimum: 0 }
+              tax_cents: { type: integer, minimum: 0 }
+              transactions: { $ref: '#/components/schemas/SuppressibleCount' }
+        compliance:
+          type: object
+          additionalProperties: false
+          required: [age_restricted_sales, id_checks, id_check_overrides, units_sold, units_with_current_coa,
+                     catalog_items_active, catalog_items_over_thc_cap, blocked_sale_attempts]
+          properties:
+            age_restricted_sales: { type: integer, minimum: 0 }
+            id_checks: { type: integer, minimum: 0 }
+            id_check_overrides: { type: integer, minimum: 0, description: 'Overrides logged with a reason.' }
+            units_sold: { type: integer, minimum: 0 }
+            units_with_current_coa: { type: integer, minimum: 0 }
+            catalog_items_active: { type: integer, minimum: 0 }
+            catalog_items_over_thc_cap:
+              type: integer
+              minimum: 0
+              description: Active items whose recorded total THC per container exceeds 0.4 mg.
+            blocked_sale_attempts:
+              type: integer
+              minimum: 0
+              description: Ring-ups stopped by catalog lock, expired COA, or THC cap.
+        fulfillment:
+          description: How customers received products (trip-reduction measure).
+          type: object
+          additionalProperties: false
+          required: [in_store, pickup, shipped]
+          properties:
+            in_store: { $ref: '#/components/schemas/SuppressibleCount' }
+            pickup: { $ref: '#/components/schemas/SuppressibleCount' }
+            shipped: { $ref: '#/components/schemas/SuppressibleCount' }
+        customer_areas:
+          description: Opt-in customers only. Township or ZIP3, never finer.
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [area_type, area_code, transactions]
+            properties:
+              area_type: { type: string, enum: [township_fips, zip3] }
+              area_code: { type: string, pattern: '^([0-9]{10}|[0-9]{3})$' }
+              transactions: { $ref: '#/components/schemas/SuppressibleCount' }
+        incidents:
+          type: object
+          additionalProperties: false
+          properties:
+            complaints_opened: { type: integer, minimum: 0 }
+            complaints_closed: { type: integer, minimum: 0 }
+            recalls: { type: integer, minimum: 0 }
+            adverse_events_reported: { type: integer, minimum: 0 }
+        dividend:
+          type: object
+          additionalProperties: false
+          required: [accrued_cents, paid_cents]
+          properties:
+            accrued_cents: { type: integer, minimum: 0, description: '1% of gross sales for the period.' }
+            paid_cents: { type: integer, minimum: 0 }
+
+    SubmissionReceiptEnvelope:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            shop_id: { type: string }
+            period: { type: string }
+            revision: { type: integer }
+            received_at: { type: string, format: date-time }
+            sha256: { type: string, description: "Digest of the canonical JSON, kept in the shop's records." }
+        meta: { $ref: '#/components/schemas/Meta' }
+
+    Shop:
+      type: object
+      properties:
+        shop_id: { type: string }
+        display_name: { type: string }
+        township_fips: { type: string }
+        member_since: { type: string, format: date }
+        audit_status: { type: string, enum: [not_yet_audited, passed, conditional, lapsed] }
+        last_audit_on: { type: [string, 'null'], format: date }
+        standard_version: { type: string }
+
+    QuarterlyReport:
+      type: object
+      properties:
+        report_id: { type: string }
+        township_fips: { type: string }
+        quarter: { type: string }
+        member_shops: { type: integer }
+        published_at: { type: string, format: date-time }
+        summary_url: { type: string, format: uri, description: Human-readable report (PDF/HTML). }
+        dataset_url: { type: string, format: uri, description: CSV of the same figures. }
+
+    LedgerEntry:
+      type: object
+      properties:
+        date: { type: string, format: date }
+        type: { type: string, enum: [contribution, grant, fee, adjustment] }
+        amount_cents: { type: integer }
+        counterparty: { type: string, description: 'Shop name for contributions; "Household grant #n" for residents (never a name).' }
+        township: { type: [string, 'null'] }
+        memo: { type: string }
+        evidence_url: { type: [string, 'null'], format: uri }

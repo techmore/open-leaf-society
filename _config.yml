@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------
+# Open Leaf Society: site settings
+# Everything marked TODO is a placeholder. Change it here once and
+# it updates across the whole site.
+# ---------------------------------------------------------------
+
+title: Open Leaf Society
+tagline: Ground truth for hemp in Bucks County and Greater Philadelphia.
+description: >-
+  An open, member-funded standard that gives townships real numbers,
+  gives shops a legal runway, and gives neighbors clear prices and a
+  direct say in where 1% of every sale goes.
+
+# If the site lives at https://<org>.github.io/<repo>/ set baseurl to "/<repo>".
+# If you use a custom domain (e.g. openleafsociety.org) leave baseurl empty.
+url: "https://techmore.github.io"
+baseurl: "/open-leaf-society"
+
+# --- Links & contacts (TODO) ---------------------------------
+repo: https://github.com/techmore/open-leaf-society          # TODO: confirm repo name
+rupert_repo: https://github.com/techmore/rupert
+contact_email: hello@openleafsociety.org                   # TODO: real inbox
+partner_name: Herbal Healers
+partner_url: https://herbalhealerscbd.com/
+home_area: Wrightstown Township, Bucks County
+
+# --- Status -----------------------------------------------------
+phase: "Phase 0: Framework & listening"
+phase_note: "We're talking with shops and township supervisors now. No commitments asked yet."
+next_meetup: "Date and venue to be announced"              # TODO
+
+# --- Navigation -------------------------------------------------
+nav:
+  - { title: Supervisors, url: /supervisors/ }
+  - { title: Shops, url: /shops/ }
+  - { title: Neighbors, url: /neighbors/ }
+  - { title: "1% Fund", url: /fund/ }
+  - { title: Data, url: /data/ }
+  - { title: About, url: /about/ }
+
+footer_nav:
+  - { title: "Charter (RFC-0001)", url: /rfc/0001/ }
+  - { title: Meetups, url: /meetups/ }
+  - { title: FAQ, url: /faq/ }
+  - { title: "API spec", url: /api/openapi.yaml }
+
+permalink: pretty
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+exclude:
+  - README.md
+  - social/
+  - data/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
