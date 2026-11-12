@@ -37,10 +37,12 @@ Neighbors and members set the priority order each year at a public meetup.
 
 ## Public ledger
 
-The ledger is a plain [CSV file]({{ '/ledger/community-dividend.csv' | relative_url }}) in the open repository, so anyone can download it, and every change has public history. Contributions are posted as one combined monthly total, never shop by shop, so no shop's sales can be worked out from the ledger.
+The ledger is a plain [CSV file]({{ '/ledger/community-dividend.csv' | relative_url }}) in the open repository, so anyone can download it, and every change has public history. Contributions are posted as one combined monthly total, never shop by shop, so no shop's sales can be worked out from the ledger. A month with fewer than three contributing shops is combined with the next month. Grants are listed by number and township, never by name or address.
 
 | Ledger | Status |
 |---|---|
 | Fund balance | **$0.00** (Phase 0, no member shops yet) |
 | Grants made | None yet |
-| Held by | The Open Leaf foundation (planned 501(c)(3), in formation), in a separate, restricted account used only for grants |
+| Held by | The Open Leaf foundation (a planned charity, in formation), in a separate, restricted account used only for grants |
+
+Help set this year's priorities: <a class="btn btn-ghost" href="{{ '/meetups/' | relative_url }}">Come to a meetup</a>

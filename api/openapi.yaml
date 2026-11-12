@@ -24,19 +24,20 @@ info:
     1. Shops aggregate locally. Raw transactions never leave the shop.
     2. No customer identifiers. Schemas set `additionalProperties: false`, so
        unexpected fields are rejected (`400 invalid_request`).
-    3. Any count from 1 to 10 people or transactions MUST be sent as `null`
-       with `suppressed: true` (zero is allowed; it identifies no one). When a
-       sales category's transactions are suppressed, its `units`,
-       `gross_cents` and `tax_cents` MUST also be `null`. The server re-checks
-       and rejects unsuppressed small cells (`422 small_cell`).
+    3. Submissions carry exact counts and are visible only to the data
+       steward. Suppression happens once, at publication, after shops are
+       combined, so small counts at one shop still add up to useful totals.
     4. Area totals come only from customers who opted in, at township or ZIP3
        precision.
-    5. Secondary suppression: a suppressed value must not be recoverable by
-       subtracting from other totals (including `dividend.accrued_cents`).
-    6. Shops are protected too: no public output (report, dataset, ledger)
+    5. Published small cells: any published count from 1 to 10 people or
+       transactions is `null` with `suppressed: true` (zero is allowed; it
+       identifies no one), and so are the dollar figures that go with it.
+    6. Secondary suppression: a suppressed value must not be recoverable by
+       subtracting from other published totals.
+    7. Shops are protected too: no public output (report, dataset, ledger)
        shows a single shop. Public figures combine at least 3 shops; a
-       township with fewer rolls up to the county.
-    7. Raw submissions are visible only to the data steward.
+       township with fewer rolls up to the county. The treasurer sees each
+       shop's 1% payment for reconciliation only.
 
     Rupert source mapping (informative):
 
@@ -100,7 +101,7 @@ paths:
             application/json:
               schema: { $ref: '#/components/schemas/Error' }
         '422':
-          description: Failed validation (e.g. `small_cell`, `period_in_future`)
+          description: Failed validation (e.g. `period_in_future`)
           content:
             application/json:
               schema: { $ref: '#/components/schemas/Error' }
@@ -253,11 +254,25 @@ components:
             code:
               type: string
               enum: [invalid_request, invalid_pagination, unauthorized, forbidden, not_found,
-                     period_locked, period_in_future, small_cell, rate_limited]
+                     period_locked, period_in_future, rate_limited]
             message: { type: string }
 
+    Count:
+      description: Exact count, sent privately to the data steward.
+      type: integer
+      minimum: 0
+
+    PublishedCents:
+      description: "A published dollar figure. null with suppressed true when it belongs to a suppressed cell."
+      type: object
+      additionalProperties: false
+      required: [value, suppressed]
+      properties:
+        value: { type: [integer, 'null'], minimum: 0 }
+        suppressed: { type: boolean }
+
     SuppressibleCount:
-      description: "A count. Zero or 11+ is sent as-is. 1 to 10 is sent as value null with suppressed true."
+      description: "A published count. Zero or 11+ is shown as-is. 1 to 10 is shown as value null with suppressed true."
       type: object
       additionalProperties: false
       required: [value, suppressed]
@@ -281,7 +296,7 @@ components:
     MonthlySubmission:
       type: object
       additionalProperties: false
-      required: [period, standard_version, generator, sales, compliance, fulfillment, dividend]
+      required: [period, standard_version, generator, sales, compliance, fulfillment, incidents, dividend]
       properties:
         period: { type: string, pattern: '^[0-9]{4}-(0[1-9]|1[0-2])$' }
         revision: { type: integer, minimum: 0, default: 0 }
@@ -307,10 +322,10 @@ components:
             required: [category, units, gross_cents, tax_cents, transactions]
             properties:
               category: { $ref: '#/components/schemas/ProductCategory' }
-              units: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
-              gross_cents: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
-              tax_cents: { type: [integer, 'null'], minimum: 0, description: 'null when transactions are suppressed' }
-              transactions: { $ref: '#/components/schemas/SuppressibleCount' }
+              units: { type: integer, minimum: 0 }
+              gross_cents: { type: integer, minimum: 0 }
+              tax_cents: { type: integer, minimum: 0 }
+              transactions: { $ref: '#/components/schemas/Count' }
         compliance:
           type: object
           additionalProperties: false
@@ -318,12 +333,12 @@ components:
                      units_with_current_coa, units_with_passing_coa, catalog_items_active,
                      catalog_items_over_thc_cap, blocked_sale_attempts]
           properties:
-            age_restricted_sales: { $ref: '#/components/schemas/SuppressibleCount' }
-            id_checks: { $ref: '#/components/schemas/SuppressibleCount' }
-            id_checks_failed: { $ref: '#/components/schemas/SuppressibleCount' }
+            age_restricted_sales: { $ref: '#/components/schemas/Count' }
+            id_checks: { $ref: '#/components/schemas/Count' }
+            id_checks_failed: { $ref: '#/components/schemas/Count' }
             id_check_overrides:
               description: Overrides logged with a reason.
-              $ref: '#/components/schemas/SuppressibleCount'
+              $ref: '#/components/schemas/Count'
             units_sold: { type: integer, minimum: 0 }
             units_with_current_coa: { type: integer, minimum: 0 }
             units_with_passing_coa: { type: integer, minimum: 0 }
@@ -342,9 +357,9 @@ components:
           additionalProperties: false
           required: [in_store, pickup, shipped]
           properties:
-            in_store: { $ref: '#/components/schemas/SuppressibleCount' }
-            pickup: { $ref: '#/components/schemas/SuppressibleCount' }
-            shipped: { $ref: '#/components/schemas/SuppressibleCount' }
+            in_store: { $ref: '#/components/schemas/Count' }
+            pickup: { $ref: '#/components/schemas/Count' }
+            shipped: { $ref: '#/components/schemas/Count' }
         customer_areas:
           description: Opt-in customers only. Township or ZIP3, never finer.
           type: array
@@ -355,16 +370,17 @@ components:
             properties:
               area_type: { type: string, enum: [township_fips, zip3] }
               area_code: { type: string, pattern: '^([0-9]{10}|[0-9]{3})$' }
-              transactions: { $ref: '#/components/schemas/SuppressibleCount' }
+              transactions: { $ref: '#/components/schemas/Count' }
         incidents:
           type: object
           additionalProperties: false
+          required: [complaints_opened, complaints_closed, complaints_with_corrective_action, recalls, adverse_events_reported]
           properties:
-            complaints_opened: { $ref: '#/components/schemas/SuppressibleCount' }
-            complaints_closed: { $ref: '#/components/schemas/SuppressibleCount' }
-            complaints_with_corrective_action: { $ref: '#/components/schemas/SuppressibleCount' }
+            complaints_opened: { $ref: '#/components/schemas/Count' }
+            complaints_closed: { $ref: '#/components/schemas/Count' }
+            complaints_with_corrective_action: { $ref: '#/components/schemas/Count' }
             recalls: { type: integer, minimum: 0, description: 'Product recalls (about products, not people).' }
-            adverse_events_reported: { $ref: '#/components/schemas/SuppressibleCount' }
+            adverse_events_reported: { $ref: '#/components/schemas/Count' }
         dividend:
           type: object
           additionalProperties: false
@@ -401,10 +417,39 @@ components:
       type: object
       properties:
         report_id: { type: string }
-        township_fips: { type: string }
+        township_fips: { type: [string, 'null'], description: 'null when geography_level is county.' }
+        geography_level:
+          type: string
+          enum: [township, county]
+          description: county when the township has fewer than 3 member shops.
+        county_fips: { type: string }
         quarter: { type: string }
-        member_shops: { type: integer }
+        member_shops: { type: integer, minimum: 3 }
         published_at: { type: string, format: date-time }
+        figures:
+          description: Combined across member shops. Small cells suppressed per privacy rules 5 and 6.
+          type: object
+          additionalProperties: false
+          properties:
+            sales:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  category: { $ref: '#/components/schemas/ProductCategory' }
+                  transactions: { $ref: '#/components/schemas/SuppressibleCount' }
+                  gross_cents: { $ref: '#/components/schemas/PublishedCents' }
+                  tax_cents: { $ref: '#/components/schemas/PublishedCents' }
+            id_checks: { $ref: '#/components/schemas/SuppressibleCount' }
+            id_checks_failed: { $ref: '#/components/schemas/SuppressibleCount' }
+            share_units_with_passing_coa: { type: [number, 'null'], minimum: 0, maximum: 1 }
+            complaints_opened: { $ref: '#/components/schemas/SuppressibleCount' }
+            complaints_with_corrective_action: { $ref: '#/components/schemas/SuppressibleCount' }
+            recalls: { type: integer, minimum: 0 }
+            adverse_events_reported: { $ref: '#/components/schemas/SuppressibleCount' }
+            fulfillment_shipped_or_pickup: { $ref: '#/components/schemas/SuppressibleCount' }
+            dividend_granted_in_area_cents: { type: integer, minimum: 0 }
         summary_url: { type: string, format: uri, description: Human-readable report (PDF/HTML). }
         dataset_url: { type: string, format: uri, description: CSV of the same figures. }
 
@@ -414,7 +459,7 @@ components:
         date: { type: string, format: date }
         type: { type: string, enum: [contribution, grant, bank_fee, adjustment], description: 'bank_fee is third-party banking cost only; the fund never pays operations.' }
         amount_cents: { type: integer }
-        counterparty: { type: string, description: '"Member contributions (combined)" for contributions, never a single shop; "Household grant #n" for residents (never a name).' }
-        township: { type: [string, 'null'] }
+        counterparty: { type: string, description: '"Member contributions (combined)" for contributions, never a single shop, and only once at least 3 shops contributed (otherwise rolled into the next month); "Household grant #n" for residents (never a name).' }
+        township: { type: [string, 'null'], description: 'Always null for contributions.' }
         memo: { type: string }
-        evidence_url: { type: [string, 'null'], format: uri }
+        evidence_url: { type: [string, 'null'], format: uri, description: 'Redacted document; never shows a recipient name or address.' }

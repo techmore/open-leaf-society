@@ -4,7 +4,7 @@ title: For township supervisors
 eyebrow: Supervisors & township staff
 lede: Real, local numbers on hemp and CBD sales, delivered quarterly, at no cost to the township.
 tldr:
-  - "Free, standardized quarterly reports on member-shop sales in your township."
+  - "Free, standardized quarterly reports on member-shop sales in your area."
   - "Local data for zoning, public safety and budget planning, in place of guesswork."
   - "Phase 0 asks for one thing only: a conversation."
 ---
@@ -20,7 +20,7 @@ tldr:
 | Incidents & complaints | Reported problems and how they were resolved |
 | Community Dividend | Dollars from the 1% fund spent inside your township |
 
-All figures are totals. No customer names, IDs or individual purchases are ever included, and no report shows a single shop's sales: figures combine at least three member shops, and a township with fewer rolls up to the county. See [our data rules]({{ '/data/' | relative_url }}).
+All figures are totals. No customer names, IDs or individual purchases are ever included, and no report shows a single shop's sales: figures combine at least three member shops, and a township with fewer rolls up to the county. Small counts (1 to 10) appear as "fewer than 11". See [our data rules]({{ '/data/' | relative_url }}).
 
 **What the reports cover:** participating member shops only, not every store, gas station or online seller. Figures are self-reported until independent audits begin in Phase 2.
 

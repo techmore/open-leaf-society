@@ -13,6 +13,8 @@ tldr:
 
 **{{ site.next_meetup }}**
 
+[Email me when the date is set](mailto:{{ site.contact_email }}?subject=Meetup%20notice)
+
 ## What happens
 
 | Time | What |
@@ -26,7 +28,7 @@ tldr:
 ## Ground rules
 
 - **No consumption, no sales, no products** at meetups.
-- **Adults 18+.**
+- **Adults 18+.** It's a civic meeting, with no products.
 - **Grow science means legal plants:** hops, native trees and general gardening. We don't teach growing cannabis, or hemp without a state permit.
 - Everyone's welcome: residents, shop owners, township officials, first responders, skeptics.
 - What you say may be summarized in the recap, but **without your name** unless you ask to be named.

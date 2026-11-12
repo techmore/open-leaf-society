@@ -19,7 +19,7 @@ No. Reports are free. Phase 0 is only conversations.
 Not directly today. Pennsylvania townships can only levy taxes the state authorizes, and there's no local hemp or cannabis sales tax. What townships can use right now: real local data for planning, voluntary community agreements with member shops (never tied to permits or zoning), and the 1% Community Dividend, which reaches residents directly.
 
 ## Who sees my purchase data?
-Open Leaf never receives your individual purchases. Your shop and its payment processor keep normal sales records, like any store. Only monthly totals reach Open Leaf, small groups are hidden, and no customer identifiers are collected. See [Data]({{ '/data/' | relative_url }}).
+Open Leaf never receives your individual purchases. Your shop and its payment processor keep normal sales records, like any store. Only monthly totals reach Open Leaf's data steward, small groups are hidden before anything is published, and no customer identifiers are collected. See [Data]({{ '/data/' | relative_url }}).
 
 ## Why ISO 9001?
 It's the world's most widely used quality-management standard, and the founders have used it. Our standard borrows its structure (written procedures, records, internal audits, corrective action) so results are **reproducible**: it's written so different auditors checking the same evidence reach the same result. The Open Leaf Standard itself is open and free; ISO's own text is not.
@@ -38,3 +38,7 @@ No. Member dues fund the work. The 1% Community Dividend is held by the Open Lea
 
 ## Do shops have to use Rupert?
 No. The data format is open, so any point-of-sale system can send it, and pilot shops can use a spreadsheet. Rupert is the free, open-source reference version.
+
+## My question isn't here
+
+Email <a href="mailto:{{ site.contact_email }}?subject=Question">{{ site.contact_email }}</a> or bring it to a [meetup]({{ '/meetups/' | relative_url }}). Common questions get added to this page.

@@ -26,7 +26,7 @@ Hemp and CBD **retailers, growers and processors** are the focus. Medical cannab
 
 Dues are not set yet. They're an open question in the [draft charter]({{ '/rfc/0001/' | relative_url }}). The current proposal is tiers by shop size, so a single-location shop isn't paying what a multi-site processor pays.
 
-**Your numbers stay yours.** Open Leaf never publishes a single shop's sales. Reports and the fund ledger only show totals combined across at least three shops.
+**Your numbers stay yours.** Open Leaf never publishes a single shop's sales. Reports and the fund ledger only show totals combined across at least three shops, and only the independent data steward sees your monthly submission.
 
 ### Do I have to use Rupert?
 

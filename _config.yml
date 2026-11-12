@@ -7,9 +7,9 @@
 title: Open Leaf Society
 tagline: Ground truth for hemp in Bucks County and Greater Philadelphia.
 description: >-
-  An open, member-funded standard that gives townships real numbers,
-  gives shops a legal runway, and gives neighbors clear prices and a
-  direct say in where 1% of every sale goes.
+  A proposed nonprofit where Bucks County hemp and CBD shops opt in to
+  an open standard, send townships privacy-protected totals each
+  quarter, and put 1% of their sales into a local community fund.
 
 # If the site lives at https://<org>.github.io/<repo>/ set baseurl to "/<repo>".
 # If you use a custom domain (e.g. openleafsociety.org) leave baseurl empty.
@@ -47,6 +47,8 @@ footer_nav:
 
 permalink: pretty
 markdown: kramdown
+plugins:
+  - jekyll-sitemap
 kramdown:
   input: GFM
   hard_wrap: false

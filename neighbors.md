@@ -5,7 +5,7 @@ eyebrow: Residents
 lede: Clear prices, tested products, real privacy, and 1% of every member sale going straight back into your community.
 tldr:
   - "Member shops agree to sell lab-tested products at clearly posted prices, and to check ID."
-  - "Your purchases never leave the shop with your name on them. We only publish totals."
+  - "Open Leaf never receives your name or your individual purchases. We only publish totals."
   - "1% of member sales funds local projects directly, and you help choose them."
 ---
 
@@ -22,11 +22,11 @@ Member shops agree to all of these, and an independent auditor will check them:
 
 ## Your privacy
 
-| We publish | We never collect or publish |
+| We publish | We never publish |
 |---|---|
-| Monthly totals by product category | Your name, phone, email or ID number |
+| Monthly totals by product category | Your name, phone, email or ID number (we never collect them) |
 | Totals by wide area (a township, or the first three digits of a ZIP code), only from customers who opt in | Individual purchases |
-| Lab-test and ID-check rates | Anything about a group of 1 to 10 people |
+| Lab-test and ID-check rates | Anything about a group of 1 to 10 customers |
 
 **About area data:** a member shop may ask for your ZIP code at checkout. Saying no is fine. If you say yes, only the wide area is used for reporting, never your name.
 

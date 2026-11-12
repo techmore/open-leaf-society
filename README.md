@@ -44,5 +44,6 @@ jekyll serve        # http://localhost:4000
 - [ ] Founder names: confirm "Derek Ubel" and "Sean Down" spellings
 - [ ] First meetup date and venue (`next_meetup`, and Week 4 post)
 - [ ] Licence for site content (suggest CC BY 4.0) and for the spec
-- [ ] Counsel review: entity structure, fund program (incl. PA commercial co-venturer / charitable-solicitation registration), community-agreement model (no ties to permits/zoning), hemp claims
+- [ ] Counsel review: entity structure, fund program (incl. PA commercial co-venturer / charitable-solicitation registration, which may also cover the 1% wording on the site), community-agreement model (no ties to permits/zoning), hemp claims
 - [ ] Appoint a data steward (independent of founders and member shops)
+- [ ] Set the minimum age for member sales (RFC-0001 open question 10)

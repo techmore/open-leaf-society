@@ -57,7 +57,7 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 
 ## Week 3: The 1% idea
 
-> ⚠️ **Hold until counsel confirms** whether Pennsylvania's charitable-solicitation rules (commercial co-venturer registration) apply to advertising "1% of sales to a fund."
+> ⚠️ **Hold until counsel confirms** whether Pennsylvania's charitable-solicitation rules (commercial co-venturer registration) apply to advertising "1% of sales to a fund." The same review covers the 1% wording on the website.
 
 **Graphic text:** "1% of every member sale → batteries for seniors' homes, support for fire & EMS."
 
@@ -72,7 +72,7 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 > Starting small, growing with every member shop. Free to apply. Need-based. Every dollar on a public ledger. Help us set the priorities at our first meetup.
 
 **Short:**
-> What if 1% of every local hemp sale kept a senior's heat on during an outage? Our Community Dividend proposal, with a public ledger → [link]
+> What if 1% of every member-shop sale kept a senior's heat on during an outage? Our Community Dividend proposal, with a public ledger → [link]
 
 **Links to:** /fund/
 
@@ -88,7 +88,7 @@ One post a week. Every post links back to a page on the site. This folder isn't 
 > 🗓 [DATE], 6:30 pm
 > 📍 [VENUE]
 >
-> 15-minute briefing, a short teaching segment from Herbal Healers on how to read a lab certificate, then an open floor. Residents, shop owners, township officials, first responders, and skeptics all welcome.
+> 15-minute briefing, a short teaching segment from an independent lab expert on how to read a lab certificate, then an open floor. Residents, shop owners, township officials, first responders, and skeptics all welcome.
 >
 > Bring your questions. We'll publish what we heard.
 

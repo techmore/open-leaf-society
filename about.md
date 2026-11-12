@@ -69,6 +69,7 @@ Independent members hold the majority, and the chair is independent, so the peop
 - **{{ site.partner_name }} steps out** of any decision about a competing shop.
 - **Meetup teaching slots rotate** among member shops and independent experts.
 - **Shop owners never audit**, or vote on audit results for, any shop.
+- **Hosted Rupert**, if offered, runs under a separate data agreement. Open Leaf and its founders never access hosted shop records.
 
 ## Structure
 
@@ -79,3 +80,5 @@ We're forming as a nonprofit. The structure we're considering, subject to legal 
 - An **independent auditing body**, funded by dues but governed separately.
 
 Open Leaf is **not yet incorporated or tax-exempt**. This will be updated as each step is completed.
+
+<p><a class="btn btn-primary" href="mailto:{{ site.contact_email }}?subject=Open%20seat">Ask about a seat</a></p>
