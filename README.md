@@ -4,6 +4,8 @@ Public site and working documents for Open Leaf Society, a Cannabaceae civic soc
 
 Built with Jekyll so GitHub Pages builds it automatically. No build step or CI is needed.
 
+**Live site:** https://techmore.github.io/open-leaf-society/
+
 ## Layout
 
 | Path | What it is |
@@ -47,3 +49,5 @@ jekyll serve        # http://localhost:4000
 - [ ] Counsel review: entity structure, fund program (incl. PA commercial co-venturer / charitable-solicitation registration, which may also cover the 1% wording on the site), community-agreement model (no ties to permits/zoning), hemp claims
 - [ ] Appoint a data steward (independent of founders and member shops)
 - [ ] Set the minimum age for member sales (RFC-0001 open question 10)
+
+Part of [Techmore](https://techmore.github.io/pages/repos/).
